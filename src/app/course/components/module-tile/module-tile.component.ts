@@ -13,16 +13,7 @@ export class ModuleTileComponent implements OnInit {
   @Input() public module!: ModuleType;
   isSelected: boolean = false
 
-  constructor(public dialog: MatDialog) { }
-
-  openDialog() {
-    const dialogRef = this.dialog.open(RemoveDialogComponent);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
-
+  constructor() { }
   ngOnInit(): void {
   }
   showMedia(){
