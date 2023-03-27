@@ -5,4 +5,5 @@ export type ModuleType = {
   name: string
   objective: string
   medias: MediaType[]
+  isSelected: boolean
 }

@@ -1,8 +1,5 @@
-<ul class="module-list">
+<ul>
   <li *ngFor="let module of modules">
-    {{ module.name }}
-    <p>
-      {{module.medias.length}}
-    </p>
+    <app-module-tile [module]="module"></app-module-tile>
   </li>
 </ul>
