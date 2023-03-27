@@ -9,6 +9,7 @@ import { ModuleListComponent } from './components/module-list/module-list.compon
 import { MediaTileComponent } from './components/media-tile/media-tile.component';
 import { ModuleTileComponent } from './components/module-tile/module-tile.component';
 import { RemoveDialogComponent } from './components/dialogs/remove-dialog/remove-dialog.component';
+import { AddComponent } from './components/add/add.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { RemoveDialogComponent } from './components/dialogs/remove-dialog/remove
     ModuleListComponent,
     MediaTileComponent,
     ModuleTileComponent,
-    RemoveDialogComponent
+    RemoveDialogComponent,
+    AddComponent
   ],
   imports: [
     SharedModule,
