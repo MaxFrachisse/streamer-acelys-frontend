@@ -1,5 +1,5 @@
 <ul class="module-list">
   <li *ngFor="let module of modules">
-    {{ module.name }}
+    <app-module-tile [module]="module" class="module-style"></app-module-tile>
   </li>
 </ul>

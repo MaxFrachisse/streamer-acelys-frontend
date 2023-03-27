@@ -1,0 +1,33 @@
+.module-line{
+    display: flex;
+}
+
+.media-right{
+    display: flex;
+    float:right;
+    margin-left: auto;
+    margin-right: 3em;
+}
+
+.arrow{
+    margin-left: 0.5em;
+}
+
+.icon-list {
+    display: inline-block;
+    &.up {
+      animation-name: up;
+      animation-duration: .5s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-out;
+    }
+
+    &.down {
+      animation-name: down;
+      animation-duration: .5s;
+      animation-fill-mode: forwards;
+      animation-iteration-count: 1;
+      animation-timing-function: ease-out;
+    }
+  }

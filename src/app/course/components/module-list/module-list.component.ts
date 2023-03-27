@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MediaType } from '../../types/media-type';
 import { ModuleType } from '../../types/module-type';
 
 @Component({
@@ -7,7 +8,6 @@ import { ModuleType } from '../../types/module-type';
   styleUrls: ['./module-list.component.scss']
 })
 export class ModuleListComponent implements OnInit {
-
   @Input() modules: ModuleType[] = []
 
   constructor() { }

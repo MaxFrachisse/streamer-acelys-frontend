@@ -17,6 +17,7 @@ export class TileComponent implements OnInit {
   }
 
   public onClick(object: any): void {
+    console.log(object.action)
     this._router.navigate(object.action);
   }
 }

@@ -1,0 +1,17 @@
+<div class="module-line">
+    {{module.name}}
+    <div class="media-right">
+        <div>
+            {{module.medias.length}} medias
+        </div>
+        <div class="arrow">
+            <span [ngClass]="{'icon-list': true, 'up': !isSelected, 'down': isSelected}"
+                (click)="showMedia()">&gt;</span>
+        </div>
+    </div>
+</div>
+<div *ngIf="isSelected">
+    <ng-container *ngFor="let media of module.medias">
+        <app-media-tile [media]="media"></app-media-tile>
+    </ng-container>
+</div>

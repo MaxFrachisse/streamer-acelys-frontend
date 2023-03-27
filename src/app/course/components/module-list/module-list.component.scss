@@ -3,8 +3,12 @@ ul {
     list-style-type: none;
 
     li {
+      display: flex;
       padding-left: .5em;
       border-bottom: solid 1px rgba(128, 128, 128, .8);
     }
   }
+}
+.module-style{
+  width: 100%;
 }
