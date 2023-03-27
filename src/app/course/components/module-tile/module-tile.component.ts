@@ -1,6 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { MediaType } from '../../types/media-type';
 import { ModuleType } from '../../types/module-type';
+import { RemoveDialogComponent } from '../dialogs/remove-dialog/remove-dialog.component';
 
 @Component({
   selector: 'app-module-tile',
@@ -11,7 +13,15 @@ export class ModuleTileComponent implements OnInit {
   @Input() public module!: ModuleType;
   isSelected: boolean = false
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
+
+  openDialog() {
+    const dialogRef = this.dialog.open(RemoveDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 
   ngOnInit(): void {
   }
