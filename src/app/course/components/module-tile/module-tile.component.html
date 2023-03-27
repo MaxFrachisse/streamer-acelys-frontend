@@ -1,8 +1,11 @@
-<ul class="module-list">
-    <li>
-        {{module.name}}
-        <div class="mediaLength">
+<div class="module-line">
+    {{module.name}}
+    <div class="media-right">
+        <div>
             {{module.medias.length}} medias
         </div>
-    </li>
-</ul>
+        <div class="arrow">
+            <span [ngClass]="{'icon-list': true, 'up': !module.isSelected, 'down': module.isSelected}">&gt;</span>
+          </div>
+    </div>
+</div>
