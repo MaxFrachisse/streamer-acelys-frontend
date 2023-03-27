@@ -5,5 +5,6 @@ export type MediaType = {
     duration: number
     createdAt: Date
     url: string
+    typeMedia: string
   }
   
