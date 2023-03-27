@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { MediaType } from '../../types/media-type';
 import { ModuleType } from '../../types/module-type';
 
 @Component({
@@ -7,13 +8,15 @@ import { ModuleType } from '../../types/module-type';
   styleUrls: ['./module-tile.component.scss']
 })
 export class ModuleTileComponent implements OnInit {
-  @Input() public module!: ModuleType
+  @Input() public module!: ModuleType;
+  isSelected: boolean = false
+
   constructor() { }
 
   ngOnInit(): void {
   }
-  test(object: any){
-    object.class
-    console.log(this.module.isSelected)
+  showMedia(){
+    this.isSelected = !this.isSelected
+    console.log(this.isSelected)
   }
 }

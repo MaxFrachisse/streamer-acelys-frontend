@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { MediaType } from '../../types/media-type';
 
 @Component({
   selector: 'app-media-tile',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./media-tile.component.scss']
 })
 export class MediaTileComponent implements OnInit {
-
+  @Input() media!: MediaType
   constructor() { }
 
   ngOnInit(): void {
