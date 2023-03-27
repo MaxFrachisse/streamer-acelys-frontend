@@ -8,6 +8,20 @@
             <span [ngClass]="{'icon-list': true, 'up': !isSelected, 'down': isSelected}"
                 (click)="showMedia()">&gt;</span>
         </div>
+        <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+            <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>
+                <span>View course</span>
+            </button>
+            <button mat-menu-item>
+                <span>Update course</span>
+            </button>
+            <button mat-menu-item>
+                <span>Delete course</span>
+            </button>
+        </mat-menu>
     </div>
 </div>
 <div *ngIf="isSelected">
