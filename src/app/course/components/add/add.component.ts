@@ -4,8 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { ToastService } from 'src/app/core/toast.service';
-import { AddModuleComponent } from 'src/app/module/dialogs/add-module/add-module.component';
+import { AddModuleComponent } from '../../dialogs/add-module/add-module.component';
 import { CourseModel } from '../../models/course-model';
+import { Module } from '../../models/module.model';
 import { CourseService } from '../../services/course.service';
 
 @Component({
@@ -42,6 +43,9 @@ export class AddComponent implements OnInit {
         ]
       ],
       objective: [
+        '',
+      ],
+      modules:[
         '',
       ]
     })
@@ -82,6 +86,13 @@ export class AddComponent implements OnInit {
   }
 
   moduleDialog(){
-    this.dialog.open(AddModuleComponent);
+    var dialogRef = this.dialog.open(AddModuleComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      result._courseId = this.form.value.id
+      console.log('Modules of the forms : ' +  this.form.value.modules)
+      console.log('This is the value returned by my dialogRef : ' + result)
+      this.form.value.modules.push(result)
+    })
   }
 }
