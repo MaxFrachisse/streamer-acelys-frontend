@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { take } from 'rxjs';
+import { ToastService } from 'src/app/core/toast.service';
 import { StudentFormService } from 'src/app/student/services/student-form.service';
 import { CourseModel } from '../../models/course-model';
 import { CourseService } from '../../services/course.service';
@@ -15,7 +18,9 @@ export class AddComponent implements OnInit {
 
   constructor(
     private _formBuilder: FormBuilder,
-    private _courseService: CourseService
+    private _courseService: CourseService,
+    private _snackBar: ToastService,
+    private _router: Router
   ) { }
 
   ngOnInit(): void {
@@ -41,45 +46,36 @@ export class AddComponent implements OnInit {
   }
 
   public onSubmit(){
-    this._courseService.add(this.form.value).subscribe()
-  }
-
-
-
-
-  /*
-    public onSubmit(): void {
-      this._service.add(this.form.value)
-      .pipe(
-        take(1)
-      )
-      .pipe(
-        take(1)
-      ).subscribe({
-        next: (response: IStudent) => {
+    this._courseService.add(this.form.value).pipe(
+      take(1)
+    )
+    .pipe(
+      take(1)
+    ).subscribe({
+      next: (response: CourseModel) => {
+        this._snackBar.show(
+          `Course : ${response.title} was created`
+        )
+        this._router.navigate(['/', 'course', 'list'])
+      },
+      error: (badRequest: any) => {
+        this._snackBar.cssClass = 'failed'
+        if (badRequest.status === 409) {
+          
           this._snackBar.show(
-            `Student ${response.lastName} was created`
+            badRequest.error.reason,
+            'Got it!'
           )
-          this._router.navigate(['/', 'student', 'list'])
-        },
-        error: (badRequest: any) => {
-          this._snackBar.cssClass = 'failed'
-          if (badRequest.status === 409) {
-            
-            this._snackBar.show(
-              badRequest.error.reason,
-              'Got it!'
-            )
-    
-            this.form.controls[badRequest.error.attribute].setValue('')
-          } else {
-            this._snackBar.show(
-              `Something went wrong while processing`,
-              'Got it!'
-            )
-          }
   
+          this.form.controls[badRequest.error.attribute].setValue('')
+        } else {
+          this._snackBar.show(
+            `Something went wrong while processing`,
+            'Got it!'
+          )
         }
-      })
-    }*/
+
+      }
+    })
+  }
 }
