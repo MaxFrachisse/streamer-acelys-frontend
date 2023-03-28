@@ -14,13 +14,11 @@ export class ModuleTileComponent implements OnInit {
   constructor() { }
   ngOnInit(): void {
     this.module.medias.forEach(element => {
-      console.log(this.totalDuration)
       this.totalDuration+=element.duration
     });
   }
 
   showMedia(){
     this.isSelected = !this.isSelected
-    console.log(this.isSelected)
   }
 }

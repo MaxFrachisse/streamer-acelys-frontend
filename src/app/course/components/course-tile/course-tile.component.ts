@@ -20,7 +20,7 @@ export class CourseTileComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(RemoveDialogComponent, {
       data: {
-        id: this.course.id
+        course: this.course
       }
     });
 

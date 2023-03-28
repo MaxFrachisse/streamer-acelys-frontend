@@ -1,6 +1,8 @@
 import { HttpResponse } from '@angular/common/http';
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Router } from '@angular/router';
+import { ToastService } from 'src/app/core/toast.service';
 import { CourseService } from 'src/app/course/services/course.service';
 
 @Component({
@@ -13,17 +15,37 @@ export class RemoveDialogComponent implements OnInit {
   constructor(
     public dialogRef: MatDialogRef<RemoveDialogComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any,
-    public courseService: CourseService
+    public courseService: CourseService,
+    private _router: Router,
+    private _snackBar: ToastService,
   ) { }
 
   ngOnInit(): void {
-    console.log(this.data)
   }
+
   onSubmitDelete() {
-    this.courseService.remove(this.data.id).subscribe({
-      next: ((Response: HttpResponse<any>) => {
-        console.log(`Voici l'id du cours supprimer : ${this.data.id}`)
-      })
+    this.courseService.remove(this.data.course.id).subscribe({
+      next: ((response: HttpResponse<any>) => {
+        this._snackBar.show(
+          `Course : ${this.data.course.id} was deleted along with ${this.data.course.modules.length} modules`
+        )
+      }),
+      error: (badRequest: any) => {
+        this._snackBar.cssClass = 'failed'
+        if (badRequest.status === 409) {
+
+          this._snackBar.show(
+            badRequest.error.reason,
+            'Got it!'
+          )
+        } else {
+          this._snackBar.show(
+            `Something went wrong while processing`,
+            'Got it!'
+          )
+        }
+
+      }
     })
   }
 }
