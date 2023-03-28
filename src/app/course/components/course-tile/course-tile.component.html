@@ -6,12 +6,27 @@
     <div class="col xs1">
       {{ course.modules.length }} items
     </div>
+
     <!-- Icon open / close -->
     <div class="col xs1">
-      <span [ngClass]="{'icon-list': true, 'up': !course.isSelected, 'down': course.isSelected}" (click)="revealOrHide(course)">&gt;</span>
+      <span [ngClass]="{'icon-list': true, 'up': !course.isSelected, 'down': course.isSelected}"
+        (click)="revealOrHide(course)">&gt;</span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item>
+            <span>View course</span>
+          </button>
+          <button mat-menu-item>
+            <span>Update course</span>
+          </button>
+          <button mat-menu-item (click)="openDialog()">
+            <span>Remove course</span>
+          </button>
+        </mat-menu>
     </div>
-  </div>
 
+  </div>
   <app-module-list [ngClass]="{'is-visible': course.isSelected}" [modules]="course.modules"></app-module-list>
 </div>
-

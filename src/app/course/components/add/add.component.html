@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col xs12">
+        <ng-container *ngIf="course">
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <fieldset>
+                    <legend>Create a course</legend>
+                    <div class="row">
+                        <div class="col xs12 md6">
+                            <mat-form-field>
+                                <input matInput placeholder="Course title..." formControlName="title">
+                                <mat-error *ngIf="c['title'].errors && c['title'].touched">
+                                    Title is required
+                                </mat-error>
+                            </mat-form-field>
+                        </div>
+                        <div class="col xs12 md6">
+                            <mat-form-field>
+                                <input matInput placeholder="Objective ..." formControlName="objective">
+                            </mat-form-field>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="row">
+                    <div class="col xs5"></div>
+                    <div class="col xs2">
+                        <button mat-raised-button color="primary" [disabled]="form.invalid">Create</button>
+                    </div>
+                    <div class="col xs5"></div>
+                </div>
+            </form>
+        </ng-container>
+    </div>
+</div>

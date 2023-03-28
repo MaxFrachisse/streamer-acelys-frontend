@@ -1,0 +1,8 @@
+<h2 mat-dialog-title>Are you sure you want to remove Cours {{data.id}}</h2>
+<mat-dialog-content class="mat-typography">
+    <p>After confirm, this course will not be available anymore and all concerned mdoules will be removed too</p>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close cdkFocusInitial>Cancel</button>
+    <button mat-button [mat-dialog-close]="true" (click)="onSubmitDelete()">Confirm</button>
+</mat-dialog-actions>
