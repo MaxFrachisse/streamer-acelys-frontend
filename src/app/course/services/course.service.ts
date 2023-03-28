@@ -26,4 +26,11 @@ export class CourseService {
       }
     )
   }
+
+  public add(course: CourseModel): Observable<any> {
+    return this._httpClient.post<CourseModel>(
+      this.endPoint,
+      course
+    )
+  }
 }
