@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { ToastService } from 'src/app/core/toast.service';
-import { StudentFormService } from 'src/app/student/services/student-form.service';
+import { AddModuleComponent } from 'src/app/module/dialogs/add-module/add-module.component';
 import { CourseModel } from '../../models/course-model';
 import { CourseService } from '../../services/course.service';
 
@@ -20,7 +21,8 @@ export class AddComponent implements OnInit {
     private _formBuilder: FormBuilder,
     private _courseService: CourseService,
     private _snackBar: ToastService,
-    private _router: Router
+    private _router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -77,5 +79,9 @@ export class AddComponent implements OnInit {
 
       }
     })
+  }
+
+  moduleDialog(){
+    this.dialog.open(AddModuleComponent);
   }
 }
