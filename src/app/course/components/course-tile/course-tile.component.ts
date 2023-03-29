@@ -3,7 +3,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { CourseListType } from '../../types/course-list-type';
 import { RemoveDialogComponent } from '../../dialogs/remove-dialog/remove-dialog.component';
 import { Router } from '@angular/router';
-import { ListComponent } from '../../list/list.component';
 
 @Component({
   selector: 'app-course-tile',
@@ -33,7 +32,6 @@ export class CourseTileComponent implements OnInit {
       window.location.reload()
     }); 
   }
-
 
   public revealOrHide(course: CourseListType): void {
     course.isSelected = !course.isSelected
