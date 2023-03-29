@@ -1,7 +1,7 @@
 export class Module {
     private _id?: number
-    private _name: string = ''
-    private _objective: string = ''
+    private name: string = ''
+    private objective: string = ''
     private _courseId?: number
 
     get id() {
@@ -12,20 +12,21 @@ export class Module {
       this._id = val
     }
     
-    get name() {
-      return this._name
+    //@TODO Trouver un moyen de pas devoir interchanger les _  ( nécessaire pour l'envoie de donner vers le backend )
+    get _name() {
+      return this.name
     }
     
-    set name(val: string) {
-      this._name = val
+    set _name(val: string) {
+      this.name = val
     }
     
-    get objective() {
-      return this._objective
+    get _objective() {
+      return this.objective
     }
     
-    set objective(val: string) {
-      this._objective = val
+    set _objective(val: string) {
+      this.objective = val
     }
 
     get courseId(){

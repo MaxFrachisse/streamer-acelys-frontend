@@ -17,6 +17,7 @@ import { CourseService } from '../../services/course.service';
 export class AddComponent implements OnInit {
   public form: FormGroup = new FormGroup({})
   public course: CourseModel = new CourseModel()
+  public moduleList: Array<any> = new Array()
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -89,10 +90,9 @@ export class AddComponent implements OnInit {
     var dialogRef = this.dialog.open(AddModuleComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      result._courseId = this.form.value.id
-      console.log('Modules of the forms : ' +  this.form.value.modules)
-      console.log('This is the value returned by my dialogRef : ' + result)
-      this.form.value.modules.push(result)
+      console.log(JSON.stringify(result))
+      this.moduleList.push(result)
+      this.form.value.modules = this.moduleList
     })
   }
 }

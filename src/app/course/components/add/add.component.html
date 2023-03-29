@@ -17,14 +17,21 @@
                             <mat-form-field>
                                 <input matInput placeholder="Objective ..." formControlName="objective">
                             </mat-form-field>
-                        </div>                        
+                        </div>
                     </div>
-                    <button mat-raised-button type="button" color="primary" (click)="moduleDialog()">Add a module</button>
+                    <button mat-raised-button type="button" color="primary" (click)="moduleDialog()">Add a
+                        module</button>
+                    <ng-container *ngIf="moduleList.length != 0">
+                        <mat-card *ngFor="let module of moduleList">
+                            <mat-card-content> {{module.name}} </mat-card-content>
+                        </mat-card>
+                    </ng-container>
                 </fieldset>
                 <div class="row">
                     <div class="col xs5"></div>
                     <div class="col xs2">
-                        <button mat-raised-button color="primary" type="submit" [disabled]="form.invalid">Create</button>
+                        <button mat-raised-button color="primary" type="submit"
+                            [disabled]="form.invalid">Create</button>
                     </div>
                     <div class="col xs5"></div>
                 </div>

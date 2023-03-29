@@ -2,6 +2,7 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Module } from '../../models/module.model';
+import { ModuleType } from '../../types/module-type';
 
 @Component({
   selector: 'app-add-module',
@@ -10,6 +11,7 @@ import { Module } from '../../models/module.model';
 })
 export class AddModuleComponent implements OnInit {
   public form: FormGroup = new FormGroup({})
+  public newModule: Module = new Module()
 
   constructor(
     private _formBuilder: FormBuilder,
@@ -19,6 +21,7 @@ export class AddModuleComponent implements OnInit {
 
   ngOnInit(): void {
     this._buildForm()
+    this.newModule!._name = ''
   }
 
   public get c(): {[key: string]: AbstractControl} {
@@ -40,10 +43,9 @@ export class AddModuleComponent implements OnInit {
   }
 
   onSubmit(){
-    var module = new Module()
-    module.name = this.form.value.name
-    module.objective = this.form.value.objective
-    this.dialogRef.close(module)
+    this.newModule!._name = this.form.value.name
+    this.newModule!._objective = this.form.value.objective
+    this.dialogRef.close(this.newModule)
   }
 
 }

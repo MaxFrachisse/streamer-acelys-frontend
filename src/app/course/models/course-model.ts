@@ -28,13 +28,13 @@ export class CourseModel {
     set objective(val: string) {
         this._objective = val
     }
-
+    /*
     get modules(){
         return this._modules
     }
 
     set modules(val: Module){
         this._modules.push(val)
-    }
+    }*/
     
 }
