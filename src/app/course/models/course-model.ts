@@ -3,7 +3,7 @@ export class CourseModel {
     private _id?: number
     private _title: string = ''
     private _objective: string = ''
-    private _modules!: any
+    private _modules!: Module[]
 
     get id() {
         return this._id === undefined ? 0 : this._id
@@ -36,4 +36,5 @@ export class CourseModel {
     set modules(val: Module){
         this._modules.push(val)
     }
+    
 }
