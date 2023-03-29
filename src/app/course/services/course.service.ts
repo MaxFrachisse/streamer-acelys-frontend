@@ -30,7 +30,7 @@ export class CourseService {
   public add(course: CourseModel): Observable<any> {
     console.log("This is what i'll send to back end : " + JSON.stringify(course))
     return this._httpClient.post<CourseModel>(
-      this.endPoint,
+      this.endPoint+"/module",
       course
     )
   }
