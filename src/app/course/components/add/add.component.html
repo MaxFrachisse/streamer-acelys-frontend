@@ -22,9 +22,9 @@
                     <button mat-raised-button type="button" color="primary" (click)="moduleDialog()">Add a
                         module</button>
                     <ng-container *ngIf="moduleList.length != 0">
-                        <mat-card *ngFor="let module of moduleList">
+                        <mat-card *ngFor="let module of moduleList"  id="{{module.name}}">
                             <mat-card-title>{{module.name}}</mat-card-title>
-                            <mat-icon class="trash" color="warn">delete</mat-icon>
+                            <button (click)="deleteModule(module.name)" type="button" class="trash"><mat-icon color="warn">delete</mat-icon></button>
                         </mat-card>
                     </ng-container>
                 </fieldset>

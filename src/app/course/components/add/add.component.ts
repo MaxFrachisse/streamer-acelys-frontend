@@ -95,4 +95,9 @@ export class AddComponent implements OnInit {
       this.form.value.modules = this.moduleList
     })
   }
+
+  deleteModule(name:string){
+    console.log(`i'll remove this id : ${name}`)
+    document.getElementById(name)?.remove()
+  }
 }
