@@ -9,7 +9,10 @@ mat-card-title {
     padding:0;
 }
 
-.trash{
+.delete{
     float: right;
     margin-left: auto;
+    border-radius: 80%;
+    background-color: white;
+    border-color: white;
 }
