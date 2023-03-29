@@ -17,10 +17,10 @@
           <button mat-menu-item>
             <span>View course</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="openUpdateDialog()">
             <span>Update course</span>
           </button>
-          <button mat-menu-item (click)="openDialog()">
+          <button mat-menu-item (click)="openRemoveDialog()">
             <span>Remove course</span>
           </button>
         </mat-menu>

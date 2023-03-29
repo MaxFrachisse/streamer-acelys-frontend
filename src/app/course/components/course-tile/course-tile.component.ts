@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { CourseListType } from '../../types/course-list-type';
 import { RemoveDialogComponent } from '../../dialogs/remove-dialog/remove-dialog.component';
 import { Router } from '@angular/router';
+import { UpdateComponent } from '../../dialogs/update/update.component';
 
 @Component({
   selector: 'app-course-tile',
@@ -20,8 +21,9 @@ export class CourseTileComponent implements OnInit {
 
   ngOnInit(): void {
   }
+  
 
-  openDialog() {
+  openRemoveDialog() {
     const dialogRef = this.dialog.open(RemoveDialogComponent, {
       data: {
         course: this.course
@@ -38,4 +40,13 @@ export class CourseTileComponent implements OnInit {
     console.log(`Course was toggled : ${course.isSelected}`)
     this.onToggleCourse.emit(course)
   }
+
+  openUpdateDialog(){
+    const dialogRef = this.dialog.open(UpdateComponent, {
+      data: {
+        course: this.course
+      }
+    });
+  }
+
 }
