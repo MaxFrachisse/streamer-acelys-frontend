@@ -1,7 +1,10 @@
 <div class="module-line">
     {{module.name}}
     <div class="media-right">
-        <div>
+        <div class="module-info">
+           Duration: {{totalDuration*1000 | date:'mm:ss'}} seconds
+        </div>
+        <div class="module-info">
             {{module.medias.length}} medias
         </div>
         <div class="arrow">

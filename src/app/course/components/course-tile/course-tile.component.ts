@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CourseListType } from '../../types/course-list-type';
-import { RemoveDialogComponent } from '../dialogs/remove-dialog/remove-dialog.component';
+import { RemoveDialogComponent } from '../../dialogs/remove-dialog/remove-dialog.component';
 
 @Component({
   selector: 'app-course-tile',
@@ -20,7 +20,7 @@ export class CourseTileComponent implements OnInit {
   openDialog() {
     const dialogRef = this.dialog.open(RemoveDialogComponent, {
       data: {
-        id: this.course.id
+        course: this.course
       }
     });
 

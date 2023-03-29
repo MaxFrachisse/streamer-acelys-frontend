@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { take } from 'rxjs';
 import { ToastService } from 'src/app/core/toast.service';
-import { StudentFormService } from 'src/app/student/services/student-form.service';
+import { AddModuleComponent } from '../../dialogs/add-module/add-module.component';
 import { CourseModel } from '../../models/course-model';
+import { Module } from '../../models/module.model';
 import { CourseService } from '../../services/course.service';
 
 @Component({
@@ -15,12 +17,14 @@ import { CourseService } from '../../services/course.service';
 export class AddComponent implements OnInit {
   public form: FormGroup = new FormGroup({})
   public course: CourseModel = new CourseModel()
+  public moduleList: Array<any> = new Array()
 
   constructor(
     private _formBuilder: FormBuilder,
     private _courseService: CourseService,
     private _snackBar: ToastService,
-    private _router: Router
+    private _router: Router,
+    public dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -40,6 +44,9 @@ export class AddComponent implements OnInit {
         ]
       ],
       objective: [
+        '',
+      ],
+      modules:[
         '',
       ]
     })
@@ -76,6 +83,16 @@ export class AddComponent implements OnInit {
         }
 
       }
+    })
+  }
+
+  moduleDialog(){
+    var dialogRef = this.dialog.open(AddModuleComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(JSON.stringify(result))
+      this.moduleList.push(result)
+      this.form.value.modules = this.moduleList
     })
   }
 }

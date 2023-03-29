@@ -1,8 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MediaType } from '../../types/media-type';
 import { ModuleType } from '../../types/module-type';
-import { RemoveDialogComponent } from '../dialogs/remove-dialog/remove-dialog.component';
 
 @Component({
   selector: 'app-module-tile',
@@ -12,12 +9,16 @@ import { RemoveDialogComponent } from '../dialogs/remove-dialog/remove-dialog.co
 export class ModuleTileComponent implements OnInit {
   @Input() public module!: ModuleType;
   isSelected: boolean = false
+  totalDuration: number = 0
 
   constructor() { }
   ngOnInit(): void {
+    this.module.medias.forEach(element => {
+      this.totalDuration+=element.duration
+    });
   }
+
   showMedia(){
     this.isSelected = !this.isSelected
-    console.log(this.isSelected)
   }
 }
