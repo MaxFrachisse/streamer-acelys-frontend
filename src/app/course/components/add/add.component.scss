@@ -1,0 +1,15 @@
+mat-card {
+    margin-top: 0.4em;
+    padding: 0.7em;
+    display: flex;
+    align-items: center;
+}
+
+mat-card-title {
+    padding:0;
+}
+
+.trash{
+    float: right;
+    margin-left: auto;
+}

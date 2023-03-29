@@ -23,7 +23,8 @@
                         module</button>
                     <ng-container *ngIf="moduleList.length != 0">
                         <mat-card *ngFor="let module of moduleList">
-                            <mat-card-content> {{module.name}} </mat-card-content>
+                            <mat-card-title>{{module.name}}</mat-card-title>
+                            <mat-icon class="trash" color="warn">delete</mat-icon>
                         </mat-card>
                     </ng-container>
                 </fieldset>
