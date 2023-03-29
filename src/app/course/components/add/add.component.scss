@@ -16,3 +16,28 @@ mat-card-title {
     background-color: white;
     border-color: white;
 }
+
+.add-module{
+    margin: 0.5em;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+}
+
+.form-style{
+    display: flex;
+    justify-content: space-evenly;
+}
+
+legend{
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.submit-style{
+    display: flex;
+    justify-content: flex-start;
+    margin-top:0.2em;
+    margin-bottom: 0.2em;
+}

@@ -47,5 +47,7 @@ export class RemoveDialogComponent implements OnInit {
 
       }
     })
+
+    this.dialogRef.close(1)
   }
 }
