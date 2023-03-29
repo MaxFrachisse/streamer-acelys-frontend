@@ -11,6 +11,7 @@ import { ModuleTileComponent } from './components/module-tile/module-tile.compon
 import { RemoveDialogComponent } from './dialogs/remove-dialog/remove-dialog.component';
 import { AddComponent } from './components/add/add.component';
 import { AddModuleComponent } from './dialogs/add-module/add-module.component';
+import { UpdateComponent } from './dialogs/update/update.component';
 
 
 @NgModule({
@@ -22,7 +23,8 @@ import { AddModuleComponent } from './dialogs/add-module/add-module.component';
     ModuleTileComponent,
     RemoveDialogComponent,
     AddComponent,
-    AddModuleComponent
+    AddModuleComponent,
+    UpdateComponent
   ],
   imports: [
     SharedModule,

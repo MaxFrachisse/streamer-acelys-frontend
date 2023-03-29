@@ -2,6 +2,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { CourseListType } from '../../types/course-list-type';
 import { RemoveDialogComponent } from '../../dialogs/remove-dialog/remove-dialog.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-course-tile',
@@ -12,7 +13,10 @@ export class CourseTileComponent implements OnInit {
   @Input() public course!: CourseListType
   @Output() public onToggleCourse: EventEmitter<CourseListType> = new EventEmitter()
 
-  constructor(public dialog: MatDialog) { }
+  constructor(
+    public dialog: MatDialog,
+    public router: Router
+    ) { }
 
   ngOnInit(): void {
   }
@@ -25,10 +29,9 @@ export class CourseTileComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
-    });
+      window.location.reload()
+    }); 
   }
-
 
   public revealOrHide(course: CourseListType): void {
     course.isSelected = !course.isSelected

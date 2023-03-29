@@ -1,8 +1,10 @@
 <div class="module-line">
-    {{module.name}}
+    <span class="module-title">
+        {{module.name}}
+    </span>
     <div class="media-right">
         <div class="module-info">
-           Duration: {{totalDuration*1000 | date:'mm:ss'}} seconds
+           Duration: {{totalDuration*1000 | date:'mm:ss'}} minutes
         </div>
         <div class="module-info">
             {{module.medias.length}} medias
@@ -15,6 +17,6 @@
 </div>
 <div *ngIf="isSelected">
     <ng-container *ngFor="let media of module.medias">
-        <app-media-tile [media]="media"></app-media-tile>
+        <app-media-tile [media]="media" class="media-details"></app-media-tile>
     </ng-container>
 </div>

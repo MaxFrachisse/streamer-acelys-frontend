@@ -9,7 +9,6 @@ import { CourseListType } from '../types/course-list-type';
   styleUrls: ['./list.component.scss']
 })
 export class ListComponent implements OnInit {
-
   public courses: Array<CourseListType> = []
 
   constructor(

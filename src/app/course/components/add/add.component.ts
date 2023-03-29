@@ -90,9 +90,12 @@ export class AddComponent implements OnInit {
     var dialogRef = this.dialog.open(AddModuleComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(JSON.stringify(result))
       this.moduleList.push(result)
       this.form.value.modules = this.moduleList
     })
+  }
+
+  deleteModule(name:string){
+    document.getElementById(name)?.remove()
   }
 }

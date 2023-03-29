@@ -73,3 +73,19 @@
     transform: rotate(90deg);
   }
 }
+
+.course-name{
+  display: flex;
+  align-items: baseline;
+  font-weight: 550;
+  font-size: 1.3em;
+
+  .xs1{
+    margin-left: auto;
+    text-align: baseline;
+  }
+
+  .modules-number{
+    padding-right: 0.5em;
+  }
+}
