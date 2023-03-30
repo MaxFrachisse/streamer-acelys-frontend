@@ -37,7 +37,7 @@ export class CourseFormService {
         ]
       ],
       objective: [
-        '',
+        this.course.objective,
       ],
       modules:[
         '',

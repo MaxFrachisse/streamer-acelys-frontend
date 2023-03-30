@@ -53,41 +53,78 @@ export class AddComponent implements OnInit {
   }
 
   public onSubmit(){
-    this._courseService.add(this.form.value).pipe(
-      take(1)
-    )
-    .pipe(
-      take(1)
-    ).subscribe({
-      next: (response: CourseModel) => {
-        this._snackBar.show(
-          `Course : ${response.title} was created`
-        )
-        this._router.navigate(['/', 'course', 'list'])
-      },
-      error: (badRequest: any) => {
-        this._snackBar.cssClass = 'failed'
-        if (badRequest.status === 409) {
-          
+    if(this.moduleList.length>0){
+      this._courseService.addWithModules(this.form.value).pipe(
+        take(1)
+      )
+      .pipe(
+        take(1)
+      ).subscribe({
+        next: (response: CourseModel) => {
           this._snackBar.show(
-            badRequest.error.reason,
-            'Got it!'
+            `Course : ${response.title} was created`
           )
+          this._router.navigate(['/', 'course', 'list'])
+        },
+        error: (badRequest: any) => {
+          this._snackBar.cssClass = 'failed'
+          if (badRequest.status === 409) {
+            
+            this._snackBar.show(
+              badRequest.error.reason,
+              'Got it!'
+            )
+    
+            this.form.controls[badRequest.error.attribute].setValue('')
+          } else {
+            this._snackBar.show(
+              `Something went wrong while processing`,
+              'Got it!'
+            )
+          }
   
-          this.form.controls[badRequest.error.attribute].setValue('')
-        } else {
-          this._snackBar.show(
-            `Something went wrong while processing`,
-            'Got it!'
-          )
         }
-
-      }
-    })
+      })
+    }
+    else{
+      this._courseService.add(this.form.value).pipe(
+        take(1)
+      )
+      .pipe(
+        take(1)
+      ).subscribe({
+        next: (response: CourseModel) => {
+          this._snackBar.show(
+            `Course : ${response.title} was created`
+          )
+          this._router.navigate(['/', 'course', 'list'])
+        },
+        error: (badRequest: any) => {
+          this._snackBar.cssClass = 'failed'
+          if (badRequest.status === 409) {
+            
+            this._snackBar.show(
+              badRequest.error.reason,
+              'Got it!'
+            )
+    
+            this.form.controls[badRequest.error.attribute].setValue('')
+          } else {
+            this._snackBar.show(
+              `Something went wrong while processing`,
+              'Got it!'
+            )
+          }
+  
+        }
+      })
+    }
   }
 
   moduleDialog(){
-    var dialogRef = this.dialog.open(AddModuleComponent);
+    var dialogRef = this.dialog.open(AddModuleComponent, {
+      autoFocus:true
+    });
 
     dialogRef.afterClosed().subscribe(result => {
       this.moduleList.push(result)

@@ -30,6 +30,7 @@ export class CourseTileComponent implements OnInit {
       }
     });
 
+    // Recharge la page après la suppression d'un cours
     dialogRef.afterClosed().subscribe(result => {
       window.location.reload()
     }); 

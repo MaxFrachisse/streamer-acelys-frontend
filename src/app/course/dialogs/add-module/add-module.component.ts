@@ -46,5 +46,4 @@ export class AddModuleComponent implements OnInit {
     this.newModule!._objective = this.form.value.objective
     this.dialogRef.close(this.newModule)
   }
-
 }
