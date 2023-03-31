@@ -29,9 +29,8 @@ export class RemoveDialogComponent implements OnInit {
         this._snackBar.show(
           `Course : ${this.data.course.id} was deleted along with ${this.data.course.modules.length} modules`
         )
+        setTimeout(() => {window.location.reload()}, 3000)
       })
     })
-
-    this.dialogRef.close(1)
   }
 }
