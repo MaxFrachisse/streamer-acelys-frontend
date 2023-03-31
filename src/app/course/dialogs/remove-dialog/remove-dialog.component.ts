@@ -29,25 +29,8 @@ export class RemoveDialogComponent implements OnInit {
         this._snackBar.show(
           `Course : ${this.data.course.id} was deleted along with ${this.data.course.modules.length} modules`
         )
-      }),
-      error: (badRequest: any) => {
-        this._snackBar.cssClass = 'failed'
-        if (badRequest.status === 409) {
-
-          this._snackBar.show(
-            badRequest.error.reason,
-            'Got it!'
-          )
-        } else {
-          this._snackBar.show(
-            `Something went wrong while processing`,
-            'Got it!'
-          )
-        }
-
-      }
+        setTimeout(() => {window.location.reload()}, 3000)
+      })
     })
-
-    this.dialogRef.close(1)
   }
 }

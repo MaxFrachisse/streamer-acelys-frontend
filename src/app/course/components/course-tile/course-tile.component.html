@@ -6,7 +6,7 @@
     <!-- Icon open / close -->
     <div class="col xs1">
       <span class="modules-number">
-        {{ course.modules.length }} items
+        {{ course.modules.length }} modules
       </span>
       <span [ngClass]="{'icon-list': true, 'up': !course.isSelected, 'down': course.isSelected}"
         (click)="revealOrHide(course)">&gt;</span>
@@ -17,10 +17,10 @@
           <button mat-menu-item>
             <span>View course</span>
           </button>
-          <button mat-menu-item>
+          <button mat-menu-item (click)="openUpdateDialog()">
             <span>Update course</span>
           </button>
-          <button mat-menu-item (click)="openDialog()">
+          <button mat-menu-item (click)="openRemoveDialog()">
             <span>Remove course</span>
           </button>
         </mat-menu>

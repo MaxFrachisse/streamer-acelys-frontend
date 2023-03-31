@@ -2,7 +2,6 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { Module } from '../../models/module.model';
-import { ModuleType } from '../../types/module-type';
 
 @Component({
   selector: 'app-add-module',
@@ -47,5 +46,4 @@ export class AddModuleComponent implements OnInit {
     this.newModule!._objective = this.form.value.objective
     this.dialogRef.close(this.newModule)
   }
-
 }
