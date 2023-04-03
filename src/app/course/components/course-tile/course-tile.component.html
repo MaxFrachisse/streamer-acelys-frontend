@@ -8,7 +8,7 @@
       <span class="modules-number">
         {{ course.modules.length }} modules
       </span>
-      <toggle [selectedStatus]="course.isSelected"  (onToggle)="toggle($event)">
+      <toggle [selectedStatus]="course.isSelected"  (onToggle)="toggle($event)" [isExpandable]="course.modules!.length > 0">
 
       </toggle>
       <!--<span [ngClass]="{'icon-list': true, 'up': !course.isSelected, 'down': course.isSelected}"
