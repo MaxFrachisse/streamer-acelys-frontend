@@ -8,8 +8,12 @@
       <span class="modules-number">
         {{ course.modules.length }} modules
       </span>
+      <toggle [selectedStatus]="course.isSelected"  (onToggle)="toggle($event)">
+
+      </toggle>
       <span [ngClass]="{'icon-list': true, 'up': !course.isSelected, 'down': course.isSelected}"
-        (click)="revealOrHide(course)">&gt;</span>
+        (click)="revealOrHide(course)">&gt;
+      </span>
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
