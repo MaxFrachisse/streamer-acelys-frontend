@@ -18,6 +18,11 @@ export class ModuleTileComponent implements OnInit {
     });
   }
 
+  public toggle(courseStatus: boolean): void {
+    this.isSelected = courseStatus
+    //this.onToggleCourse.emit(this.module)
+  }
+
   showMedia(){
     this.isSelected = !this.isSelected
   }

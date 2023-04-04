@@ -9,10 +9,13 @@
         <div class="module-info">
             {{module.medias.length}} medias
         </div>
-        <div class="arrow">
+        <toggle [selectedStatus]="isSelected"  (onToggle)="toggle($event)" [isExpandable]="module.medias!.length > 0">
+
+        </toggle>
+        <!--<div class="arrow">
             <span [ngClass]="{'icon-list': true, 'up': !isSelected, 'down': isSelected}"
                 (click)="showMedia()">&gt;</span>
-        </div>
+        </div>-->
     </div>
 </div>
 <div *ngIf="isSelected">

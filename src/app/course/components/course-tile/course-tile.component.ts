@@ -21,7 +21,7 @@ export class CourseTileComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
 
   openRemoveDialog() {
     const dialogRef = this.dialog.open(RemoveDialogComponent, {
@@ -32,15 +32,20 @@ export class CourseTileComponent implements OnInit {
 
     // Recharge la page après la suppression d'un cours
     dialogRef.afterClosed().subscribe(result => {
-      
+
       //window.location.reload()
-    }); 
+    });
   }
 
   public revealOrHide(course: CourseListType): void {
     course.isSelected = !course.isSelected
     console.log(`Course was toggled : ${course.isSelected}`)
     this.onToggleCourse.emit(course)
+  }
+
+  public toggle(courseStatus: boolean): void {
+    this.course.isSelected = courseStatus
+    this.onToggleCourse.emit(this.course)
   }
 
   openUpdateDialog(){
